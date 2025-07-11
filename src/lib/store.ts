@@ -342,7 +342,7 @@ export const usePomodoroStore = create<PomodoroStore>((set, get) => ({
       );
 
       // Transition to break after task completion
-      const newSessionType: "break" = "break";
+      const newSessionType = "break";
       const newTimeLeft = taskToComplete.breakDuration; // Use task's specific break duration
       const newTimerStatus = state.settings.startBreakAutomatically
         ? "running"
