@@ -1,3 +1,11 @@
+<!-- no QA tests  -->
+
+git checkout preview && git merge dev && git checkout main && git merge preview && git checkout dev
+
+<!-- still testing feat  -->
+
+git checkout preview && git merge dev && git checkout dev
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
