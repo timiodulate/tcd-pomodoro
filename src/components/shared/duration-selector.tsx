@@ -63,7 +63,7 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col items-start gap-2">
       <Label htmlFor={`${type}-duration`}>
         {type.charAt(0).toUpperCase() + type.slice(1)} Duration
       </Label>

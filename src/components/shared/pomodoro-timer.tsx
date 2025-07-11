@@ -7,6 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatTime } from "@/lib/utils";
 import DurationSelector from "./duration-selector";
 import { toast } from "@/components/ui/use-toast";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
 
 const PomodoroTimer: React.FC = () => {
   const {
@@ -168,7 +174,7 @@ const PomodoroTimer: React.FC = () => {
         )}
       </CardHeader>
 
-      <CardContent className="flex flex-col items-center gap-6">
+      <CardContent className="flex flex-col items-center justify-center gap-6">
         <div className="text-7xl font-bold tracking-tight">
           {formatTime(timeLeft)}
         </div>
@@ -183,30 +189,39 @@ const PomodoroTimer: React.FC = () => {
         </div>
 
         {currentTask && (
-          <div className="grid w-full grid-cols-1 gap-4">
-            <DurationSelector
-              type="focus"
-              currentDuration={currentTask?.focusDuration}
-              availableDurations={focusDurations}
-              onDurationChange={(d) => handleSaveEditedTask("focus", d)}
-              onAddDuration={(d) => addDuration("focus", d)}
-            />
-            <DurationSelector
-              type="roundup"
-              currentDuration={currentTask?.roundupDuration}
-              availableDurations={roundupDurations}
-              onDurationChange={(d) => handleSaveEditedTask("roundup", d)}
-              onAddDuration={(d) => addDuration("roundup", d)}
-            />
-            {/* Simplified break duration selection */}
-            <DurationSelector
-              type="break"
-              currentDuration={currentTask?.breakDuration}
-              availableDurations={breakDurations}
-              onDurationChange={(d) => handleSaveEditedTask("break", d)}
-              onAddDuration={(d) => addDuration("break", d)}
-            />
-          </div>
+          <Accordion type="multiple" className="w-full">
+            <AccordionItem value="1">
+              <AccordionTrigger className="text-md font-semibold">
+                Edit Task Durations
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid w-full grid-cols-1 gap-4">
+                  <DurationSelector
+                    type="focus"
+                    currentDuration={currentTask?.focusDuration}
+                    availableDurations={focusDurations}
+                    onDurationChange={(d) => handleSaveEditedTask("focus", d)}
+                    onAddDuration={(d) => addDuration("focus", d)}
+                  />
+                  <DurationSelector
+                    type="roundup"
+                    currentDuration={currentTask?.roundupDuration}
+                    availableDurations={roundupDurations}
+                    onDurationChange={(d) => handleSaveEditedTask("roundup", d)}
+                    onAddDuration={(d) => addDuration("roundup", d)}
+                  />
+                  {/* Simplified break duration selection */}
+                  <DurationSelector
+                    type="break"
+                    currentDuration={currentTask?.breakDuration}
+                    availableDurations={breakDurations}
+                    onDurationChange={(d) => handleSaveEditedTask("break", d)}
+                    onAddDuration={(d) => addDuration("break", d)}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         )}
       </CardContent>
     </Card>
