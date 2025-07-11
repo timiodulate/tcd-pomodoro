@@ -1,6 +1,6 @@
 <!-- no QA tests  -->
 
-git checkout preview && git merge dev && git checkout main && git merge preview && git checkout dev
+git checkout preview && git merge dev && git push && git checkout main && git merge preview && git push && git checkout dev
 
 <!-- still testing feat  -->
 
